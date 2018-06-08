@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>张浩的文档 | css技巧</title>
+    <meta name="description" content="Document library">
+    <link rel="icon" href="/v_blog/favicon.ico">
+  <link rel="manifest" href="/v_blog/manifest.json">
+    
+    <link rel="preload" href="/v_blog/assets/css/0.styles.878c6a35.css" as="style"><link rel="preload" href="/v_blog/assets/js/app.a1e2592f.js" as="script"><link rel="preload" href="/v_blog/assets/js/2.452bd561.js" as="script"><link rel="preload" href="/v_blog/assets/js/7.57884066.js" as="script"><link rel="prefetch" href="/v_blog/assets/js/3.f0b78a25.js"><link rel="prefetch" href="/v_blog/assets/js/1.d00bdc4d.js"><link rel="prefetch" href="/v_blog/assets/js/4.2205eb9a.js"><link rel="prefetch" href="/v_blog/assets/js/5.0667d97f.js"><link rel="prefetch" href="/v_blog/assets/js/6.59ccc7da.js">
+    <link rel="stylesheet" href="/v_blog/assets/css/0.styles.878c6a35.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div><a href="/v_blog/" class="home-link router-link-active"><!----><span class="site-name">
+      张浩的文档
+    </span></a><div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""><!----></div><nav class="nav-links can-hide"><div class="nav-item"><a href="/v_blog/" class="nav-link">主页</a></div><div class="nav-item"><a href="/v_blog/standard/" class="nav-link">前端规范</a></div><div class="nav-item"><a href="/v_blog/study/" class="nav-link router-link-active">学习文档</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="/v_blog/language/chinese.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----><a href="/v_blog/language/English.html" class="nav-link">English</a></li></ul></div></div><!----></nav></div></header><div class="sidebar-mask"></div><div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/v_blog/" class="nav-link">主页</a></div><div class="nav-item"><a href="/v_blog/standard/" class="nav-link">前端规范</a></div><div class="nav-item"><a href="/v_blog/study/" class="nav-link router-link-active">学习文档</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Languages</span><span class="arrow right"></span></a><ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----><a href="/v_blog/language/chinese.html" class="nav-link">简体中文</a></li><li class="dropdown-item"><!----><a href="/v_blog/language/English.html" class="nav-link">English</a></li></ul></div></div><!----></nav><ul class="sidebar-links"><li><a href="/v_blog/study/" class="sidebar-link">微信小程序“反编译”实战（一）：解包</a></li><li><a href="/v_blog/study/1.html" class="sidebar-link">前端资源</a></li><li><a href="/v_blog/study/2.html" class="active sidebar-link">css技巧</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/v_blog/study/2.html#css写自适应大小的正方形" class="sidebar-link">CSS写自适应大小的正方形</a></li><li class="sidebar-sub-header"><a href="/v_blog/study/2.html#多列等高" class="sidebar-link">多列等高</a></li><li class="sidebar-sub-header"><a href="/v_blog/study/2.html#csstip" class="sidebar-link">cssTip</a></li></ul></li></ul></div><div class="page"><div class="content"><h1 id="css技巧"><a href="#css技巧" aria-hidden="true" class="header-anchor">#</a> css技巧</h1><pre> <code>
+ background写法
+ 
+.img{
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;		//关键所在
+    overflow: hidden;
+    background:url(../res/images/haha.png) center/100% 100% no-repeat;
+}
+.img img{
+    width: 100%;
+}
+***
+img 写法
+.img{
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 100%;		//关键所在
+    overflow: hidden;
+}
+.img img{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+</code>
+</pre><p>原理：
+元素的padding的百分比数值是根据当前元素的宽度来计算的</p><p>padding只能取top或者bottom，自适应正方形其值要和宽一致，当然其他不同比例的矩形可以通过设置不同比例的padding就能得到</p><h2 id="css写自适应大小的正方形"><a href="#css写自适应大小的正方形" aria-hidden="true" class="header-anchor">#</a> CSS写自适应大小的正方形</h2><p><div>
+    img 写法
+    <div class="img"><img src="https://user-gold-cdn.xitu.io/2018/6/2/163c0f9afffa8124?imageslim"></div>
+    background 写法
+    <div class="imgs"></div></div></p><h2 id="多列等高"><a href="#多列等高" aria-hidden="true" class="header-anchor">#</a> 多列等高</h2><pre> <code>
+.web_width{
+    width: 100%;
+    overflow: hidden;			//关键所在
+}
+.left{
+    float: left;
+    width: 20%;
+    min-height: 10em;
+    background: #66afe9;
+    padding-bottom: 2000px;		//关键所在
+    margin-bottom: -2000px;		//关键所在
+}
+.right{
+    float: right;
+    width: 80%;
+    height: 20em;
+    background: #f00;
+}
+ </code>
+ </pre><img src="https://user-gold-cdn.xitu.io/2018/6/2/163c0f9b015aeebe?imageslim"><p>原理：
+padding补偿法
+在高度小的元素上加一个数值为正padding-bottom和一个数值为负margin-bottom，再在父级加上overflow: hidden隐藏子元素超出的padding-bottom
+注：</p><p>padding-bottom、margin-bottom之和要等于0（建议值不要太大，够用就行）
+代码中子元素单位用em是为了做gif效果更明显
+<a href="https://juejin.im/post/5b12ae3de51d4506d73f0bb4" target="_blank" rel="noopener noreferrer">更多内容</a></p><h2 id="csstip"><a href="#csstip" aria-hidden="true" class="header-anchor">#</a> cssTip</h2><ul><li>一、修改鼠标手势图标</li><li>二、box-shadow 三边阴影</li><li>三、超好用的 currentColor</li><li>四、png 图片如何改颜色</li><li>五、vh 与 vw</li><li>六、如何去掉 chrome input 的背景黄色</li><li>七、chrome 中设置小于 12px 的字体</li><li>八、0.5px border 如何操作</li><li>九、border 颜色渐变</li><li>十、css3 画小箭头</li><li>十一、有趣的 drop-shadow</li><li>十二、修改浏览器默认滚动条</li><li>十三、safari placeholder bugs</li><li><a href="http://jartto.wang/2017/11/12/f2e-tips/" target="_blank" rel="noopener noreferrer">转自他人文章</a></li></ul></div><!----><div class="content page-nav"><p class="inner"><span class="prev">
+        ← <a href="/v_blog/study/1.html" class="prev">
+          前端资源
+        </a></span><!----></p></div></div></div></div>
+    <script src="/v_blog/assets/js/2.452bd561.js" defer></script><script src="/v_blog/assets/js/7.57884066.js" defer></script><script src="/v_blog/assets/js/app.a1e2592f.js" defer></script>
+  </body>
+</html>
